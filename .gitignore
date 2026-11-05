@@ -1,0 +1,15 @@
+.env
+.env.local
+.env.*
+!.env.example
+/vendor/
+/composer.phar
+/storage/logs/*.log
+/storage/imports/*
+!/storage/imports/.gitkeep
+/storage/receipts/*
+!/storage/receipts/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
+/storage/tmp/*
+!/storage/tmp/.gitkeep

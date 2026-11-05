@@ -1,0 +1,10 @@
+flowchart TD
+ A[Fichier Excel / Word] --> B[Copie de travail et audit]
+ B --> C[Analyse des colonnes et formats]
+ C --> D[Zone tampon / staging]
+ D --> E[Détection des doublons et anomalies]
+ E --> F{Validation humaine}
+ F -- Refus --> G[Correction du fichier source]
+ G --> C
+ F -- Validation --> H[Intégration contrôlée en base]
+ H --> I[Journal d'audit et rapport]

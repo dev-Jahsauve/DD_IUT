@@ -1,0 +1,10 @@
+flowchart TD
+ A[Recherche interne du diplôme] --> B{Statut = prêt à remettre ?}
+ B -- Non --> C[Ne pas remettre / vérifier dossier]
+ B -- Oui --> D[Vérifier identité du bénéficiaire]
+ D --> E{Identité et signature confirmées ?}
+ E -- Non --> F[Interrompre et consigner l'anomalie]
+ E -- Oui --> G[Créer référence de reçu]
+ G --> H[Enregistrer le retrait en transaction]
+ H --> I[Passer le diplôme à REMIS]
+ I --> J[Journal d'audit et reçu]

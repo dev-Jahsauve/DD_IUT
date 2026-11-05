@@ -1,0 +1,73 @@
+erDiagram
+    ROLES ||--o{ UTILISATEURS : attribue
+    DEPARTEMENTS ||--o{ FILIERES : regroupe
+    FILIERES ||--o{ ETUDIANTS : accueille
+    ETUDIANTS ||--o{ DIPLOMES : possede
+    DIPLOMES ||--o{ DEMANDES_RETRAIT : concerne
+    DIPLOMES ||--o| RETRAITS : remise
+    UTILISATEURS ||--o{ RETRAITS : effectue
+    UTILISATEURS ||--o{ JOURNAL_AUDIT : genere
+    UTILISATEURS ||--o{ LOTS_IMPORTATION : televerse
+    LOTS_IMPORTATION ||--o{ IMPORT_LIGNES : contient
+    ROLES { bigint id PK
+      string code UK
+      string libelle
+    }
+    UTILISATEURS { bigint id PK
+      bigint role_id FK
+      string nom
+      string email UK
+      string mot_de_passe
+    }
+    DEPARTEMENTS { bigint id PK
+      string nom
+    }
+    FILIERES { bigint id PK
+      bigint departement_id FK
+      string nom
+    }
+    ETUDIANTS { bigint id PK
+      string matricule UK nullable
+      string nom
+      string prenoms
+      date date_naissance
+      bigint filiere_id FK
+    }
+    DIPLOMES { bigint id PK
+      bigint etudiant_id FK
+      string type_diplome
+      int annee_obtention
+      string statut
+      date date_depot_dossier
+      date date_transmission
+      date date_signature
+    }
+    DEMANDES_RETRAIT { bigint id PK
+      bigint diplome_id FK
+      string canal
+      string statut
+    }
+    RETRAITS { bigint id PK
+      bigint diplome_id FK
+      bigint agent_id FK
+      datetime date_retrait
+      string reference_recu UK
+    }
+    JOURNAL_AUDIT { bigint id PK
+      bigint utilisateur_id FK
+      string action
+      string entite
+      json avant_json
+      json apres_json
+    }
+    LOTS_IMPORTATION { bigint id PK
+      bigint utilisateur_id FK
+      string nom_original
+      string statut
+    }
+    IMPORT_LIGNES { bigint id PK
+      bigint lot_id FK
+      int numero_ligne
+      json donnees_json
+      string statut
+    }

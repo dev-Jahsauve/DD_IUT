@@ -1,0 +1,21 @@
+# Checklist sécurité avant mise en ligne
+
+- [ ] Accord écrit de l'IUT et domaine/sous-domaine officiellement confirmé.
+- [ ] HTTPS valide, redirection HTTP→HTTPS, HSTS.
+- [ ] `APP_DEBUG=false`, erreurs PHP non affichées au visiteur.
+- [ ] `.env` inaccessible et hors webroot.
+- [ ] DocumentRoot limité à `public/`.
+- [ ] Compte MySQL dédié avec privilèges minimaux (pas root).
+- [ ] Mot de passe administrateur fort, comptes individuels, désactivation des comptes sortants.
+- [ ] 2FA obligatoire pour le personnel.
+- [ ] Configurer Cloudflare Turnstile (`TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`, `TURNSTILE_HOSTNAME`) et tester la validation Siteverify avec le hostname final avant l'ouverture publique.
+- [ ] Valider le rate-limit fichier avec le proxy réel de l'hébergeur; mettre en place une limitation persistante adaptée au réseau et à plusieurs instances.
+- [ ] Politique de conservation et mentions de confidentialité validées par l'Université.
+- [ ] Sauvegarde quotidienne chiffrée, copie hors serveur, restauration testée.
+- [ ] Répertoire `storage/` non accessible publiquement et droits minimaux.
+- [ ] Journal d'audit exporté vers une destination protégée.
+- [ ] Analyse des dépendances Composer et revue de code.
+- [ ] Tests de droits d'accès, CSRF, XSS, injection SQL, énumération et concurrence sur une remise.
+- [ ] Environnement de test séparé de la production.
+- [ ] Procédure de retrait par mandataire validée.
+- [ ] Formation des agents et guide de continuité.

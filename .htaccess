@@ -1,0 +1,9 @@
+Options -Indexes
+<FilesMatch "^\.(env|git)">
+  Require all denied
+</FilesMatch>
+RewriteEngine On
+RewriteRule ^(app|bin|config|database|docs|routes|storage|tests|vendor|\.git)(/|$) - [F,L,NC]
+RewriteRule ^(composer\.(json|lock)|README\.md)$ - [F,L,NC]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
