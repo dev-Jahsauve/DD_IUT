@@ -1,11 +1,7 @@
 -- IUT-Diplômes — MySQL 8+ / MariaDB compatible
-CREATE DATABASE IF NOT EXISTS iut_diplomes CHARACTER
-SET
-    utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE iut_diplomes;
-
--- This file initializes an empty database. It intentionally never drops existing tables or data.
+-- Select the target database in phpMyAdmin before importing this file.
+-- This file initializes an empty database and intentionally never creates, selects,
+-- drops, or replaces a database or existing table.
 CREATE TABLE
     roles (
         id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
